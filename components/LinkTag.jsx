@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
+import React from "react"
 
 /**
  * Return either a <a> or a <Link> tag depending on wheter there is a router context or not

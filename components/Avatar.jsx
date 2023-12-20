@@ -1,8 +1,8 @@
 /**
  */
 import { Image } from "react-bootstrap"
-import { classNames } from "../dom"
 import FlexCenter from "./display/FlexCenter"
+import React from "react"
 
 /**
  * @param {*} param0 

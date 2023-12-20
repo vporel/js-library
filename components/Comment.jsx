@@ -2,6 +2,7 @@ import Avatar from "./Avatar"
 import { format } from 'date-fns'
 import { parseDate } from '../date'
 import LinkTag from './LinkTag'
+import React from "react"
 
 /**
  * A comment sent by an user
