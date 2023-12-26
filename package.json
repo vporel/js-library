@@ -1,6 +1,6 @@
 {
-  "name": "vporel",
-  "version": "1.0.1",
+  "name": "@vporel/js",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -33,14 +33,9 @@
     "compressorjs": "^1.2.1",
     "cropperjs": "^1.5.13",
     "date-fns": "^2.30.0",
-    "formik": "^2.4.2",
-    "html-react-parser": "^4.0.0",
     "intl-messageformat": "^10.2.1",
     "jquery": "^3.6.1",
     "lodash": "^4.17.21",
-    "photoviewer": "^3.6.6",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
-    "react-router-dom": "^6.14.1"
+    "photoviewer": "^3.6.6"
   }
 }
