@@ -18,13 +18,16 @@ function requestNotificationPermission(callback){
  * @param {object} extraData Extra informations to send to the server for the registration
  */
 export function registerServiceWorker(scriptPath, publicKeyUrl, subscriptionUrl, extraData = {}){
-    requestNotificationPermission(async () => {
-        const publicKey = (await get(publicKeyUrl)).data
-        const registration = await navigator.serviceWorker.register(scriptPath);
-        const subscription = await registration.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: publicKey,
+    if('serviceWorker' in navigator)
+        requestNotificationPermission(async () => {
+            const publicKey = (await get(publicKeyUrl)).data
+            const registration = await navigator.serviceWorker.register(scriptPath);
+            const subscription = await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: publicKey,
+            })
+            await post(subscriptionUrl, {subscription, ...extraData})
         })
-        await post(subscriptionUrl, {subscription, ...extraData})
-    })
+    else 
+        console.log("Service worker not supported")
 }

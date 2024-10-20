@@ -24,17 +24,17 @@ async function serverQuery(method, url, data){
         if(jsonResponse.status == 1 && jsonResponse.data == undefined) jsonResponse.data = null
         return jsonResponse
     }
-    try{
-        const jsonResponse = await response.json()
-        jsonResponse.status = 0
-        jsonResponse.statusCode = jsonResponse.statusCode ?? response.status
-        if(!jsonResponse.errorMessage && jsonResponse.violations)   //Violations for a 422 or a 400 error
-            jsonResponse.errorMessage = jsonResponse.violations[0].message
-        return jsonResponse    
-    }catch(e){
-        console.log(await response.text())
+    let jsonResponse = null
+    try{jsonResponse = await response.json()}
+    catch(e){
+        try{console.log(await response.text())}catch(e){console.log(jsonResponse)}
         return null
     }
+    jsonResponse.status = 0
+    jsonResponse.statusCode = jsonResponse.statusCode ?? response.status
+    if(!jsonResponse.errorMessage && jsonResponse.violations)   //Violations for a 422 or a 400 error
+        jsonResponse.errorMessage = jsonResponse.violations[0].message
+    return jsonResponse   
 }
 
 /**
